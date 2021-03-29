@@ -6,10 +6,7 @@ let app = express()
 
 // const SPOTIFY_CLIENT_ID = "a062fe454ee741d28c950a231f764851";
 // const SPOTIFY_CLIENT_SECRET = "f358993840b14e3e8a90d0d3f154accc";
-let redirect_uri = 
-  process.env.REDIRECT_URI || 
-  // 'http://localhost:8888/callback'
-  'https://affectionate-cori-15d3a3.netlify.app/callback';
+let redirect_uri = 'https://affectionate-cori-15d3a3.netlify.app/callback';
 
 app.get('/login', function(req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
@@ -39,7 +36,7 @@ app.get('/callback', function(req, res) {
   }
   request.post(authOptions, function(error, response, body) {
     var access_token = body.access_token
-    let uri = process.env.FRONTEND_URI || 'https://cranky-brown-3b6f4e.netlify.app/option'
+    let uri = 'https://cranky-brown-3b6f4e.netlify.app/option'
     res.redirect(uri + '?access_token=' + access_token)
   })
 })
