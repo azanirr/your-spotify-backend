@@ -4,16 +4,19 @@ let querystring = require('querystring')
 
 let app = express()
 
+// const SPOTIFY_CLIENT_ID = "a062fe454ee741d28c950a231f764851";
+// const SPOTIFY_CLIENT_SECRET = "f358993840b14e3e8a90d0d3f154accc";
 let redirect_uri = 
   process.env.REDIRECT_URI || 
-  'http://localhost:8888/callback'
+  // 'http://localhost:8888/callback'
+  'https://cranky-brown-3b6f4e.netlify.app/callback';
 
 app.get('/login', function(req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
-      client_id: process.env.SPOTIFY_CLIENT_ID,
-      scope: 'user-read-private user-read-email',
+      client_id: "a062fe454ee741d28c950a231f764851",
+      scope: 'user-read-private user-read-email user-top-read',
       redirect_uri
     }))
 })
@@ -29,14 +32,14 @@ app.get('/callback', function(req, res) {
     },
     headers: {
       'Authorization': 'Basic ' + (new Buffer(
-        process.env.SPOTIFY_CLIENT_ID + ':' + process.env.SPOTIFY_CLIENT_SECRET
+        "a062fe454ee741d28c950a231f764851" + ':' + "f358993840b14e3e8a90d0d3f154accc"
       ).toString('base64'))
     },
     json: true
   }
   request.post(authOptions, function(error, response, body) {
     var access_token = body.access_token
-    let uri = process.env.FRONTEND_URI || 'http://localhost:3000'
+    let uri = process.env.FRONTEND_URI || 'https://cranky-brown-3b6f4e.netlify.app/option'
     res.redirect(uri + '?access_token=' + access_token)
   })
 })
