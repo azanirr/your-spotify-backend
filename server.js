@@ -9,7 +9,7 @@ let app = express()
 let redirect_uri = 
   process.env.REDIRECT_URI || 
   // 'http://localhost:8888/callback'
-  'https://cranky-brown-3b6f4e.netlify.app/callback';
+  'https://affectionate-cori-15d3a3.netlify.app/callback';
 
 app.get('/login', function(req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
