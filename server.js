@@ -6,7 +6,7 @@ let app = express()
 
 // const SPOTIFY_CLIENT_ID = "a062fe454ee741d28c950a231f764851";
 // const SPOTIFY_CLIENT_SECRET = "f358993840b14e3e8a90d0d3f154accc";
-let redirect_uri = 'https://affectionate-cori-15d3a3.netlify.app/callback';
+let redirect_uri = 'https://kimi-no-spotify-backend.herokuapp.com//callback';
 
 app.get('/login', function(req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
