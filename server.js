@@ -36,7 +36,7 @@ app.get('/callback', function(req, res) {
   }
   request.post(authOptions, function(error, response, body) {
     var access_token = body.access_token
-    let uri = 'https://cranky-brown-3b6f4e.netlify.app/option'
+    let uri = 'https://kiminospotify.herokuapp.com/option'
     res.redirect(uri + '?access_token=' + access_token)
   })
 })
